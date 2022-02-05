@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:standard_form_calculator/simplecalculator.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class new_page extends StatefulWidget{
   final String equation;
@@ -21,16 +19,14 @@ class _new_pageState extends State<new_page> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result",  style: TextStyle(color: Colors.black, fontFamily: 'Basic_family'),), backgroundColor: Colors.white, centerTitle: true, elevation: 0,
+        title: Text(AppLocalizations.of(context)!.appResult,  style: TextStyle(color: Colors.black, fontFamily: 'Basic_family'),), backgroundColor: Colors.white, centerTitle: true, elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Color(0xFF8D00AF)),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-
       bottomNavigationBar: Wrap(
         children: [
           Container(
@@ -52,7 +48,7 @@ class _new_pageState extends State<new_page> {
                   Navigator.pop(context),
                 },
                 child: Text(
-                  "Calculate Another",
+                  AppLocalizations.of(context)!.appAnother,
                   style: TextStyle(
                       fontFamily: "Basic_family",
                       fontSize: 23.0,
@@ -64,272 +60,272 @@ class _new_pageState extends State<new_page> {
           ),
         ],
       ),
-
       body: Container(
         color: Colors.white,
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14, top: 20),
+              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14, top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0xFF8D00AF),
               ),
 
               padding: EdgeInsets.all(11),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-                      Text("Standard Form", style: TextStyle(fontSize: 18,fontFamily: 'Basic_family', color: Colors.white),),
-                          Row(
-                            children: [
-                              Container(
-                                width: 260,
-                                padding: EdgeInsets.only(top:10),
-                                margin: EdgeInsets.only(top:2, ),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    //  color: Colors.white
-                                    color: Color(0xFF8D00AF)
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(AppLocalizations.of(context)!.appForm, style: TextStyle(fontSize: 18,fontFamily: 'Basic_family', color: Colors.white),),
+                                Container(
+                                  //   padding: EdgeInsets.only(top:10),
+                                  margin: EdgeInsets.symmetric(vertical: 6),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      //  color: Colors.white
+                                      color: Color(0xFF8D00AF)
+                                   // color: Colors.black
+                                  ),
+                                  child: Text(widget.scientific, textAlign: TextAlign.start, style: TextStyle(fontSize: 20, fontFamily: 'Basic_family', color: Colors.white),),
                                 ),
-                                alignment: Alignment.bottomLeft,
-                                child: Text(widget.scientific, textAlign: TextAlign.start, style: TextStyle(fontSize: 25, fontFamily: 'Basic_family', color: Colors.white),),
-                              ),
-
-                              Container(
-                                margin: EdgeInsets.only(bottom: 6),
-                                alignment: Alignment.topRight,
-                                child: IconButton(
-                                  alignment: Alignment.topRight,
-                                  onPressed: () {
-                                    // var data = jsonEncode(command.dioError);
-                                    // Clipboard.setData(ClipboardData(text: data.toString()));
-                                    // snackBar();
-                                    Clipboard.setData(ClipboardData(text: "Standard Form: \n ${widget.scientific}"));
-                                    final snackBar = SnackBar(
-                                      behavior: SnackBarBehavior.floating,
-                                      content: const Text('You copied of Standard Form'),
-                                      duration: Duration(milliseconds: 300),
-                                      action: SnackBarAction(
-
-                                        label: '',
-                                        onPressed: () {
-                                          // Some code to undo the change.
-                                        },
-                                      ),
-                                    );
-
-                                    // Find the ScaffoldMessenger in the widget tree
-                                    // and use it to show a SnackBar.
-                                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                  },
-                                  //   label: Text('', style: TextStyle(color: Colors.white)),
-                                  icon: Icon(Icons.copy, color: Colors.white),
-                                  //textColor: Colors.white,
-                                  splashColor: Colors.blueAccent,
-                                ),
-                              ),
                         ],
                      ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color(0xFFFCEFFF),
-              ),
+                          ),
 
-              padding: EdgeInsets.all(11),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Scientific E-Notation", style: TextStyle( color: Color(0xFF8D00AF),fontSize: 18,fontFamily: 'Basic_family'),),
-                Row(
-                  children: [
-                    Container(
-                      width: 260,
-                      padding: EdgeInsets.only(top:10, ),
-                      margin: EdgeInsets.only(top:2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xFFFCEFFF)
-                      ),
-                      alignment: Alignment.centerLeft,
-                      child: Text(widget.equation, style: TextStyle(fontSize: 25, fontFamily: 'Basic_family'),),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 6),
+                    child: IconButton(
+                      onPressed: () {
+                        // var data = jsonEncode(command.dioError);
+                        // Clipboard.setData(ClipboardData(text: data.toString()));
+                        // snackBar();
+                        Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.appForm+": \n ${widget.scientific}"));
+                        final snackBar = SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: Text(AppLocalizations.of(context)!.appFormCop),
+                          duration: Duration(seconds: 2),
+                          action: SnackBarAction(
+                            label: '',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      //   label: Text('', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.copy, color: Colors.white),
+                      //textColor: Colors.white,
+                      splashColor: Colors.blueAccent,
                     ),
-                    Container(
-                      margin: EdgeInsets.only(bottom: 6),
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        alignment: Alignment.topRight,
-                        onPressed: () {
-                          // var data = jsonEncode(command.dioError);
-                          // Clipboard.setData(ClipboardData(text: data.toString()));
-                          // snackBar();
-                          Clipboard.setData(ClipboardData(text: "Scientific E-Notation: \n ${widget.equation}"));
-                          final snackBar = SnackBar(
-                            behavior: SnackBarBehavior.floating,
-                            content: const Text('You copied of E-Notation'),
-                            duration: Duration(milliseconds: 300),
-                            action: SnackBarAction(
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14, top: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xFFFCEFFF),
+              ),
 
-                              label: '',
-                              onPressed: () {
-                                // Some code to undo the change.
-                              },
-                            ),
-                          );
+              padding: EdgeInsets.all(11),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                          // Find the ScaffoldMessenger in the widget tree
-                          // and use it to show a SnackBar.
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        },
-                        //   label: Text('', style: TextStyle(color: Colors.white)),
-                        icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
-                        //textColor: Colors.white,
-                        splashColor: Colors.blueAccent,
-                      ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(AppLocalizations.of(context)!.appeNotation, style: TextStyle(fontSize: 18,fontFamily: 'Basic_family', color: Color(0xFF8D00AF)),),
+                        Container(
+                          //   padding: EdgeInsets.only(top:10),
+                          margin: EdgeInsets.symmetric(vertical: 6),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              //  color: Colors.white
+                              color: Color(0xFFFCEFFF)
+                          ),
+                          child: Text(widget.equation, textAlign: TextAlign.start, style: TextStyle(fontSize: 20, fontFamily: 'Basic_family', color: Colors.black),),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 6),
+                    child: IconButton(
+                      onPressed: () {
+                        // var data = jsonEncode(command.dioError);
+                        // Clipboard.setData(ClipboardData(text: data.toString()));
+                        // snackBar();
+                        Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.appeNotation+": \n ${widget.scientific}"));
+                        final snackBar = SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: Text(AppLocalizations.of(context)!.appeNotationCop),
+                          duration: Duration(seconds: 2),
+                          action: SnackBarAction(
+                            label: '',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
 
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      //   label: Text('', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
+                      //textColor: Colors.white,
+                      splashColor: Colors.blueAccent,
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14),
+              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14, top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0xFFFCEFFF),
               ),
 
               padding: EdgeInsets.all(11),
-              child: Column(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Engineering Notation", style: TextStyle(color: Color(0xFF8D00AF), fontSize: 18,fontFamily: 'Basic_family'),),
-                  Row(
-                    children: [
-                      Container(
-                        width: 260,
-                        padding: EdgeInsets.only(top:10),
-                        margin: EdgeInsets.only(top:2),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xFFFCEFFF)
-                        ),
-                        alignment: Alignment.centerLeft,
-                        child: Text(widget.engineering, style: TextStyle(fontSize: 25, fontFamily: 'Basic_family'),),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 6),
-                        alignment: Alignment.topRight,
-                        child: IconButton(
-                          alignment: Alignment.topRight,
-                          onPressed: () {
-                            // var data = jsonEncode(command.dioError);
-                            // Clipboard.setData(ClipboardData(text: data.toString()));
-                            // snackBar();
-                            Clipboard.setData(ClipboardData(text: "Engineering Notation: \n ${widget.engineering}"));
-                            final snackBar = SnackBar(
-                              behavior: SnackBarBehavior.floating,
-                              content: const Text('You copied of Engineering Notation'),
-                              duration: Duration(milliseconds: 300),
-                              action: SnackBarAction(
 
-                                label: '',
-                                onPressed: () {
-                                  // Some code to undo the change.
-                                },
-                              ),
-                            );
-
-                            // Find the ScaffoldMessenger in the widget tree
-                            // and use it to show a SnackBar.
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                          },
-                          //   label: Text('', style: TextStyle(color: Colors.white)),
-                          icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
-                          //textColor: Colors.white,
-                          splashColor: Colors.blueAccent,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(AppLocalizations.of(context)!.appEngineering, style: TextStyle(fontSize: 18,fontFamily: 'Basic_family', color: Color(0xFF8D00AF)),),
+                        Container(
+                          //   padding: EdgeInsets.only(top:10),
+                          margin: EdgeInsets.symmetric(vertical: 6),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              //  color: Colors.white
+                              color: Color(0xFFFCEFFF)
+                          ),
+                          child: Text(widget.engineering, textAlign: TextAlign.start, style: TextStyle(fontSize: 20, fontFamily: 'Basic_family', color: Colors.black),),
                         ),
-                      ),
-                    ],
-                  )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 6),
+                    child: IconButton(
+                      onPressed: () {
+                        // var data = jsonEncode(command.dioError);
+                        // Clipboard.setData(ClipboardData(text: data.toString()));
+                        // snackBar();
+                        Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.appEngineering+": \n ${widget.scientific}"));
+                        final snackBar = SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: Text(AppLocalizations.of(context)!.appEngineeringCop),
+                          duration: Duration(seconds: 2),
+                          action: SnackBarAction(
+                            label: '',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      //   label: Text('', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
+                      //textColor: Colors.white,
+                      splashColor: Colors.blueAccent,
+                    ),
+                  ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(right: 14, left: 14),
+              margin: EdgeInsets.only(bottom: 10, right: 14, left: 14, top: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color(0xFFFCEFFF),
               ),
 
               padding: EdgeInsets.all(11),
-              child: Column(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Real Number", style: TextStyle(color: Color(0xFF8D00AF), fontSize: 18,fontFamily: 'Basic_family'),),
-                 Row(
-                   children: [
-                     Container(
-                       width: 260,
-                       padding: EdgeInsets.only(top:10),
-                       margin: EdgeInsets.only(top:2),
-                       decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(10),
-                           color: Color(0xFFFCEFFF)
-                       ),
-                       alignment: Alignment.centerLeft,
-                       child: Text(widget.real, style: TextStyle(fontSize: 25, fontFamily: 'Basic_family' ),),
-                     ),
-                     Container(
-                       margin: EdgeInsets.only(bottom: 6),
-                       alignment: Alignment.topRight,
-                       child: IconButton(
-                         alignment: Alignment.topRight,
-                         onPressed: () {
-                           // var data = jsonEncode(command.dioError);
-                           // Clipboard.setData(ClipboardData(text: data.toString()));
-                           // snackBar();
-                           Clipboard.setData(ClipboardData(text: "Real Number: \n ${widget.real}"));
-                           final snackBar = SnackBar(
-                             behavior: SnackBarBehavior.floating,
-                             content: const Text('You copied of Real Number'),
-                             duration: Duration(milliseconds: 300),
-                             action: SnackBarAction(
 
-                               label: '',
-                               onPressed: () {
-                                 // Some code to undo the change.
-                               },
-                             ),
-                           );
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(AppLocalizations.of(context)!.appReal, style: TextStyle(fontSize: 18,fontFamily: 'Basic_family', color: Color(0xFF8D00AF)),),
+                        Container(
+                          //   padding: EdgeInsets.only(top:10),
+                          margin: EdgeInsets.symmetric(vertical: 6),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              //  color: Colors.white
+                              color: Color(0xFFFCEFFF)
+                          ),
+                          child: Text(widget.real, textAlign: TextAlign.start, style: TextStyle(fontSize: 20, fontFamily: 'Basic_family', color: Colors.black),),
+                        ),
+                      ],
+                    ),
+                  ),
 
-                           // Find the ScaffoldMessenger in the widget tree
-                           // and use it to show a SnackBar.
-                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                         },
-                         //   label: Text('', style: TextStyle(color: Colors.white)),
-                         icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
-                         //textColor: Colors.white,
-                         splashColor: Colors.blueAccent,
-                       ),
-                     ),
-                   ],
-                 )
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 6),
+                    child: IconButton(
+                      onPressed: () {
+                        // var data = jsonEncode(command.dioError);
+                        // Clipboard.setData(ClipboardData(text: data.toString()));
+                        // snackBar();
+                        Clipboard.setData(ClipboardData(text: AppLocalizations.of(context)!.appReal+": \n ${widget.scientific}"));
+                        final snackBar = SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: Text(AppLocalizations.of(context)!.appRealCop),
+                          duration: Duration(seconds: 2),
+                          action: SnackBarAction(
+                            label: '',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      },
+                      //   label: Text('', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.copy, color: Color(0xFF8D00AF)),
+                      //textColor: Colors.white,
+                      splashColor: Colors.blueAccent,
+                    ),
+                  ),
                 ],
               ),
             ),
-
           ],
         ),
       )
